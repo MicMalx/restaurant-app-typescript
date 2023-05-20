@@ -12,7 +12,7 @@ Project functionalities:
 # See how the app works.
 
 You can test the app at: https://restaurant-spa.onrender.com/
-The first launch of the app may take longer because the application run on the free hosting which spun down the web service after 15 minutes of inactivity.
+\*The first launch of the app may take longer because the application run on the free hosting which spun down the web service after 15 minutes of inactivity.
 
 # How to run project locally.
 
