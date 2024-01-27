@@ -3,12 +3,12 @@ import MealItem from './MealItem/MealItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { Meal } from '../../store/reducers/orderBuilder';
-
+import { MenuPart } from '../../containers/OrderBuilder/OrderBuilder';
 
 type Props = {
     summary: boolean;
     meals: Meal[];
-    menuPart?: string;
+    menuPart?: MenuPart;
 }
 
 const MealsList = (props: Props) => {

@@ -10,7 +10,9 @@ import { AppDispatch, RootState } from '../../store/store';
 import { getMeals } from '../../store/reducers/orderBuilder';
 import { setAuthRedirectPath } from '../../store/reducers/auth';
 
-const OrderBuilder = ({menuPart}: {menuPart: string}) => {
+export type MenuPart = 'soups' | 'kidsMenu' | 'mainCourse' | 'desserts';
+
+const OrderBuilder = ({menuPart}: {menuPart: MenuPart}) => {
     const { meals, error } = useSelector((state: RootState) => state.orderBuilder);
     const { token } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch<AppDispatch>();
@@ -32,16 +34,15 @@ const OrderBuilder = ({menuPart}: {menuPart: string}) => {
     }
 
     let mealsList = error ? <p>Meals can't be loaded</p> : <Spinner />;
-    if(meals.length) {
-        mealsList = <MealsList 
-            menuPart={menuPart}
-            meals={meals}
-            summary={false}
-        />;
-    }
-
     let mealsSummary = null;
     if(meals.length) {
+        mealsList = (
+            <MealsList 
+                menuPart={menuPart}
+                meals={meals}
+                summary={false}
+            />
+        );
         mealsSummary = (
             <MealsList
                 meals={meals}
@@ -49,6 +50,7 @@ const OrderBuilder = ({menuPart}: {menuPart: string}) => {
             />
         );
     }
+
     return (
         <div className={style.OrderBuilder}>
             {mealsList}
@@ -57,7 +59,9 @@ const OrderBuilder = ({menuPart}: {menuPart: string}) => {
                 btnType="Success"
                 disabled={meals.length ? false : true}
                 clicked={purchaseHandler}
-            >{token ? 'ORDER NOW' : 'LOGIN TO ORDER'}</Button>
+            >
+                {token ? 'ORDER NOW' : 'LOGIN TO ORDER'}
+            </Button>
         </div>
     );
 }

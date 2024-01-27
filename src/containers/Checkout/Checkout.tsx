@@ -6,7 +6,7 @@ import ContactData from './ContactData/ContactData';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 
-const Checkout = (props: any) => {
+const Checkout = () => {
     const { meals } = useSelector((state: RootState) => state.orderBuilder);
     const { purchased } = useSelector((state: RootState) => state.orderSender);
 

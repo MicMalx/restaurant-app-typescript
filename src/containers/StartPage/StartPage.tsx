@@ -13,7 +13,7 @@ import { resetMealsAfterPurchase } from '../../store/reducers/orderBuilder';
 import { RootState } from '../../store/store';
 
 const StartPage = () => {
-    const { purchased } = useSelector((state: RootState) => state.orderSender)
+    const { purchased } = useSelector((state: RootState) => state.orderSender);
     const dispatch = useDispatch();
     useEffect(() => {
         return () => {

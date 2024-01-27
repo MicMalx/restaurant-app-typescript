@@ -10,10 +10,10 @@ type Props = {
 
 const MealType = ({url, imgSrc, label}: Props) => (
     <NavLink to={url}>
-    <div className={style.MealType}>
-        <img src={imgSrc} alt={label} />
-        <div className={style.Label}><b>{label}</b></div>
-    </div>
+        <div className={style.MealType}>
+            <img src={imgSrc} alt={label} />
+            <div className={style.Label}><b>{label}</b></div>
+        </div>
     </NavLink>
 );
 
