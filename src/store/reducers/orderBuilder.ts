@@ -10,14 +10,14 @@ type MealFromAPI = {
 };
 export type Meal = MealFromAPI & { amount: number };
 
-type InitialState = {
+export type OrderBuilderInitialState = {
     isLoading: boolean;
     meals: Meal[];
     totalPrice: number;
     error: boolean;
 }
 
-const initialState: InitialState = {
+const initialState: OrderBuilderInitialState = {
     isLoading: false,
     meals: [],
     totalPrice: 0,

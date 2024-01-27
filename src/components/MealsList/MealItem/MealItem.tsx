@@ -16,7 +16,7 @@ const MealItem = (props: Props) => {
     let mealItem = null;
     if (!props.summary) {
         mealItem = (
-            <div className={style.MealItems}>
+            <div className={style.MealItems} data-testid="meal-card">
                 <div className={style.Name}>{props.name}</div>
                 <div className={style.Ings}>{props.ings}</div>
                 <div className={style.Price}>{props.price} $</div>
@@ -35,7 +35,7 @@ const MealItem = (props: Props) => {
         );
     } else if (props.summary && props.amount) {
         mealItem = (
-            <div className={style.Summary}>
+            <div className={style.Summary} data-testid="summary-meal">
                 <div className={style.Name}>{props.name}</div>
                 <div className={style.Ings}>{props.ings}</div>
                 <div className={style.Price}>{props.price} $</div>

@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../axios';
 
-type InitialState = {
+export type OrderSenderInitialState = {
     isLoading: boolean;
     purchased: boolean;
     error: boolean;
 }
 
-const initialState: InitialState = {
+const initialState: OrderSenderInitialState = {
     isLoading: false,
     purchased: false,
     error: false,

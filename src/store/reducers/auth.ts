@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from '../../axios';
 
-type InitialState = {
+export type AuthInitialState = {
     token: null | string,
     userId: null | string,
     error: boolean;
@@ -9,7 +9,7 @@ type InitialState = {
     authRedirectPath: string;
 }
 
-const initialState: InitialState = {
+const initialState: AuthInitialState = {
     token: null,
     userId: null,
     error: false,
