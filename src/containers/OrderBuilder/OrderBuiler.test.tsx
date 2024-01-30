@@ -1,8 +1,9 @@
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import OrderBuilder from "./OrderBuilder";
 import { renderWithStore } from "../../utils/test-utils";
 import { setupServer } from 'msw/node'
 import { rest } from "msw";
+import user from "@testing-library/user-event";
 
 const handlers = [
     rest.get("https://friendly-frog-slippers.cyclic.app/api/meals", (req, res, ctx) => {
@@ -49,4 +50,22 @@ it('should render 2 meal cards, order summary and button to proceed the order', 
     expect(mealCards).toHaveLength(2);
     expect(orderSummary).toBeInTheDocument();
     expect(proceedButton).toBeInTheDocument();
+});
+
+it('should render a row in meal summary after adding a meal', async () => {
+    renderWithStore(<OrderBuilder menuPart='soups' />, ['auth', 'orderBuilder']);
+
+    await screen.findByText(/bouillabaisse/i);
+    let mealSummaryRow = screen.queryByTestId('summary-meal');
+    expect(mealSummaryRow).toBeNull();
+
+    const mealCards = screen.getAllByTestId('meal-card');
+    const addButton = within(mealCards[0]).getByRole('button', {
+        name: /add/i
+    });
+    
+    user.click(addButton);
+
+    mealSummaryRow = screen.getByTestId('summary-meal');
+    expect(mealSummaryRow).toBeInTheDocument();
 })

@@ -2,21 +2,19 @@ import style from './MealsList.module.css';
 import MealItem from './MealItem/MealItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { Meal } from '../../store/reducers/orderBuilder';
 import { MenuPart } from '../../containers/OrderBuilder/OrderBuilder';
 
 type Props = {
     summary: boolean;
-    meals: Meal[];
     menuPart?: MenuPart;
-}
+};
 
 const MealsList = (props: Props) => {
-    const { totalPrice } = useSelector((state: RootState) => state.orderBuilder);
+    const { meals, totalPrice } = useSelector((state: RootState) => state.orderBuilder);
     return (
         <div className={style.MealsList}>
             {props.summary ? <div className={style.OrderSummary}>Order Summary</div> : null}
-            {props.meals.map((meal: any) => {
+            {meals.map((meal) => {
                 if (meal.type === props.menuPart || props.summary) {
                     return (
                         <MealItem 

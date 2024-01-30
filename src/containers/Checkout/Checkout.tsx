@@ -15,8 +15,7 @@ const Checkout = () => {
     if(meals.length && meals.some(meal => meal.amount !== 0)) {
         purchasedRedirect = purchased ? <Redirect to="/" /> : null;
         mealsSummary = (
-            <MealsList 
-                meals={meals}
+            <MealsList
                 summary={true}
             />
         );

@@ -39,13 +39,11 @@ const OrderBuilder = ({menuPart}: {menuPart: MenuPart}) => {
         mealsList = (
             <MealsList 
                 menuPart={menuPart}
-                meals={meals}
                 summary={false}
             />
         );
         mealsSummary = (
             <MealsList
-                meals={meals}
                 summary={true}
             />
         );
